@@ -9,25 +9,26 @@ import { registerApplication, start } from "single-spa";
 //   activeWhen: ["/"],
 // });
 
-registerApplication("@single-spa/welcome",
+registerApplication(
+  "@single-spa/welcome",
   () =>
     System.import(
       "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js"
     ),
-  location => location.pathname === "/",
+  (location) => location.pathname === "/"
 );
 
 registerApplication({
   name: "@study/lagou",
   app: () => System.import("@study/lagou"),
-  activeWhen: ["/lagou"]
+  activeWhen: ["/lagou"],
 });
 
 registerApplication({
   name: "@study/realworld",
   app: () => System.import("@study/realworld"),
-  activeWhen: ["/realworld"]
-})
+  activeWhen: ["/realworld"],
+});
 
 start({
   urlRerouteOnly: true,
